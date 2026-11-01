@@ -3078,6 +3078,9 @@ id bottom
 id bounce
 id btnAfficher
 id btnEffacer
+id btnEnregistrer
+id btnListe
+id btnRechercher
 id buttonPanel
 id cancel_button
 id cbConfirmation
@@ -3150,6 +3153,7 @@ id enterAlwaysCollapsed
 id etAge
 id etNom
 id etPrenom
+id etRecherche
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3430,6 +3434,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvCompteur
 id tvPlaces
 id tvResultat
 id tvTitre
@@ -3683,6 +3688,9 @@ string bottomsheet_drag_handle_clicked
 string bottomsheet_drag_handle_content_description
 string btn_afficher
 string btn_effacer
+string btn_enregistrer
+string btn_liste
+string btn_rechercher
 string call_notification_answer_action
 string call_notification_answer_video_action
 string call_notification_decline_action
@@ -3703,6 +3711,7 @@ string hide_bottom_view_on_scroll_behavior
 string hint_age
 string hint_nom
 string hint_prenom
+string hint_recherche
 string icon_content_description
 string item_view_role_description
 string m3_exceed_max_badge_text_suffix

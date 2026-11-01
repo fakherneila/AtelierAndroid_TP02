@@ -20,34 +20,34 @@
 15-->[androidx.core:core:1.12.0] /home/fakhermetba5er/.gradle/caches/transforms-3/440a64c1659b3784956be1ef27019da1/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:4:5-17:19
+17-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:4:5-17:19
 18        android:allowBackup="true"
-18-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:5:9-35
+18-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:5:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.12.0] /home/fakhermetba5er/.gradle/caches/transforms-3/440a64c1659b3784956be1ef27019da1/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 20        android:debuggable="true"
 21        android:extractNativeLibs="false"
 22        android:label="@string/app_name"
-22-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:6:9-41
+22-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:6:9-41
 23        android:supportsRtl="true"
-23-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:7:9-35
+23-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:7:9-35
 24        android:theme="@style/Theme.Material3.DayNight.NoActionBar" >
-24-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:8:9-68
+24-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:8:9-68
 25        <activity
-25-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:9:9-16:20
+25-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:9:9-16:20
 26            android:name="tn.tp.atelierandroid.MainActivity"
-26-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:10:13-41
+26-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:10:13-41
 27            android:exported="true" >
-27-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:11:13-36
+27-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:11:13-36
 28            <intent-filter>
-28-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:12:13-15:29
+28-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:12:13-15:29
 29                <action android:name="android.intent.action.MAIN" />
-29-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:13:17-69
-29-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:13:25-66
+29-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:13:17-69
+29-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:13:25-66
 30
 31                <category android:name="android.intent.category.LAUNCHER" />
-31-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:14:17-77
-31-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid/app/src/main/AndroidManifest.xml:14:27-74
+31-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:14:17-77
+31-->/home/fakhermetba5er/Desktop/projects_tp_mobile/Session3/AtelierAndroid_TP02/app/src/main/AndroidManifest.xml:14:27-74
 32            </intent-filter>
 33        </activity>
 34

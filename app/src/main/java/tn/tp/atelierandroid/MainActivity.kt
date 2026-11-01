@@ -6,16 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    // Compteurs de places (réinitialisés au redémarrage)
-    private var placesG1 = 3
-    private var placesG2 = 3
-    private var placesG3 = 3
+    // Collection privée pour stocker les participants
+    private val participants = mutableListOf<Participant>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1. Récupérer les composants
+        // Récupération des composants existants (TP2)
         val etNom = findViewById<EditText>(R.id.etNom)
         val etPrenom = findViewById<EditText>(R.id.etPrenom)
         val etAge = findViewById<EditText>(R.id.etAge)
@@ -25,72 +23,104 @@ class MainActivity : AppCompatActivity() {
         val btnAfficher = findViewById<Button>(R.id.btnAfficher)
         val btnEffacer = findViewById<Button>(R.id.btnEffacer)
         val tvResultat = findViewById<TextView>(R.id.tvResultat)
-        val tvPlaces = findViewById<TextView>(R.id.tvPlaces)
 
-        // Initialiser l'affichage des places
-        updatePlaces(tvPlaces)
+        // Nouveaux composants TP3
+        val btnEnregistrer = findViewById<Button>(R.id.btnEnregistrer)
+        val btnListe = findViewById<Button>(R.id.btnListe)
+        val tvCompteur = findViewById<TextView>(R.id.tvCompteur)
+        val etRecherche = findViewById<EditText>(R.id.etRecherche)
+        val btnRechercher = findViewById<Button>(R.id.btnRechercher)
 
-        // 2. Logique du bouton "Afficher la fiche"
-        btnAfficher.setOnClickListener {
+        // Fonction de lecture et validation (retourne un Participant ou null)
+        fun lireParticipant(): Participant? {
             val nom = etNom.text.toString().trim()
             val prenom = etPrenom.text.toString().trim()
             val age = etAge.text.toString().toIntOrNull()
             val groupe = spGroupe.selectedItem.toString()
-            val modeTest = if (rgSupport.checkedRadioButtonId == R.id.rbEmulateur) "Émulateur" else "Téléphone"
+            val support = if (rgSupport.checkedRadioButtonId == R.id.rbEmulateur) "Émulateur" else "Téléphone"
 
-            // Validation
             if (nom.isEmpty() || prenom.isEmpty()) {
-                Toast.makeText(this, "Le nom et le prénom sont obligatoires", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+                Toast.makeText(this, "Nom et prénom obligatoires", Toast.LENGTH_SHORT).show()
+                return null
             }
-            if (age == null || age < 1 || age > 120) {
-                Toast.makeText(this, "L'âge doit être un nombre entre 1 et 120", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            if (age == null || age !in 1..120) {
+                Toast.makeText(this, "Âge invalide (1-120)", Toast.LENGTH_SHORT).show()
+                return null
             }
             if (groupe == "Choisir un groupe") {
-                Toast.makeText(this, "Veuillez choisir un groupe", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+                Toast.makeText(this, "Choisissez un groupe", Toast.LENGTH_SHORT).show()
+                return null
             }
             if (!cbConfirmation.isChecked) {
-                Toast.makeText(this, "Veuillez cocher la case de confirmation", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+                Toast.makeText(this, "Confirmez les informations", Toast.LENGTH_SHORT).show()
+                return null
             }
 
-            // Vérification des places (Défi Bonus)
-            val placesDisponibles = when (groupe) {
-                "G1" -> placesG1
-                "G2" -> placesG2
-                "G3" -> placesG3
-                else -> 0
-            }
-
-            if (placesDisponibles <= 0) {
-                Toast.makeText(this, "Groupe complet", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            // Décrémenter le compteur du groupe choisi
-            when (groupe) {
-                "G1" -> placesG1--
-                "G2" -> placesG2--
-                "G3" -> placesG3--
-            }
-
-            // Mettre à jour l'affichage des places
-            updatePlaces(tvPlaces)
-
-            // Affichage du récapitulatif
-            tvResultat.text = """
-                FICHE D'INSCRIPTION
-                Nom : $nom
-                Prénom : $prenom
-                Âge : $age ans
-                Groupe : $groupe
-                Support : $modeTest
-            """.trimIndent()
+            return Participant(nom, prenom, age, groupe, support)
         }
 
-        // 3. Logique du bouton "Effacer"
+        // BOUTON AFFICHER (existant TP2)
+        btnAfficher.setOnClickListener {
+            val p = lireParticipant()
+            if (p != null) {
+                tvResultat.text = p.fiche()
+            }
+        }
+
+        // BOUTON ENREGISTRER (TP3)
+        btnEnregistrer.setOnClickListener {
+            val p = lireParticipant()
+            if (p == null) return@setOnClickListener
+
+            // Vérifier les doublons (même nom ET prénom, insensible à la casse)
+            val doublon = participants.any {
+                it.nom.equals(p.nom, ignoreCase = true) &&
+                it.prenom.equals(p.prenom, ignoreCase = true)
+            }
+
+            if (doublon) {
+                Toast.makeText(this, "Ce participant est déjà inscrit", Toast.LENGTH_SHORT).show()
+            } else {
+                participants.add(p)
+                tvResultat.text = p.fiche()
+                tvCompteur.text = "Inscriptions : ${participants.size}"
+                Toast.makeText(this, "Participant enregistré", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // BOUTON LISTE (TP3)
+        btnListe.setOnClickListener {
+            if (participants.isEmpty()) {
+                tvResultat.text = "Aucune inscription"
+            } else {
+                var affichage = ""
+                for (p in participants) {
+                    affichage += "${p.nom} ${p.prenom} (${p.groupe})\n"
+                }
+                tvResultat.text = affichage.trim()
+            }
+        }
+
+        // BOUTON RECHERCHER (TP3)
+        btnRechercher.setOnClickListener {
+            val recherche = etRecherche.text.toString().trim()
+            if (recherche.isEmpty()) {
+                Toast.makeText(this, "Saisissez un nom à rechercher", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            var trouve: Participant? = null
+            for (p in participants) {
+                if (p.nom.equals(recherche, ignoreCase = true)) {
+                    trouve = p
+                    break
+                }
+            }
+
+            tvResultat.text = trouve?.fiche() ?: "Aucun participant trouvé"
+        }
+
+        // BOUTON EFFACER (existant TP2 modifié)
         btnEffacer.setOnClickListener {
             etNom.text.clear()
             etPrenom.text.clear()
@@ -99,33 +129,7 @@ class MainActivity : AppCompatActivity() {
             rgSupport.check(R.id.rbEmulateur)
             cbConfirmation.isChecked = false
             tvResultat.text = getString(R.string.resultat_initial)
-            // Ne PAS réinitialiser les places
+            // Ne supprime PAS les participants
         }
     }
-
-    // Fonction utilitaire pour mettre à jour le TextView
-    private fun updatePlaces(tvPlaces: TextView) {
-    val g1 = if (placesG1 == 0) "COMPLET" else "$placesG1"
-    val g2 = if (placesG2 == 0) "COMPLET" else "$placesG2"
-    val g3 = if (placesG3 == 0) "COMPLET" else "$placesG3"
-
-    val fullText = "Places restantes : G1 = $g1 | G2 = $g2 | G3 = $g3"
-
-    val spannable = android.text.SpannableString(fullText)
-    val red = android.text.style.ForegroundColorSpan(android.graphics.Color.RED)
-
-    // Colorer chaque occurrence de "COMPLET" en rouge
-    var index = fullText.indexOf("COMPLET")
-    while (index >= 0) {
-        spannable.setSpan(
-            red,
-            index,
-            index + "COMPLET".length,
-            android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        index = fullText.indexOf("COMPLET", index + 1)
-    }
-
-    tvPlaces.text = spannable
-}
 }

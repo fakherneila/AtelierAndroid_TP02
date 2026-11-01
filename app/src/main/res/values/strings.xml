@@ -8,4 +8,8 @@
     <string name="btn_afficher">Afficher la fiche</string>
     <string name="btn_effacer">Effacer</string>
     <string name="resultat_initial">Votre fiche apparaîtra ici</string>
+    <string name="btn_enregistrer">Enregistrer le participant</string>
+<string name="btn_liste">Afficher la liste</string>
+<string name="btn_rechercher">Rechercher</string>
+<string name="hint_recherche">Rechercher par nom</string>
 </resources>

@@ -150,6 +150,52 @@
             android:textColor="#0F766E"
             android:layout_marginBottom="24dp" />
 
+            <!-- NOUVEAUX BOUTONS TP3 -->
+<Button
+    android:id="@+id/btnEnregistrer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/btn_enregistrer"
+    android:backgroundTint="#7C3AED"
+    android:textColor="#FFFFFF"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="12dp" />
+
+<Button
+    android:id="@+id/btnListe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/btn_liste"
+    android:backgroundTint="#2563EB"
+    android:textColor="#FFFFFF"
+    android:layout_marginBottom="16dp" />
+
+<TextView
+    android:id="@+id/tvCompteur"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Inscriptions : 0"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:layout_marginBottom="16dp" />
+
+<EditText
+    android:id="@+id/etRecherche"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/hint_recherche"
+    android:inputType="textPersonName"
+    android:layout_marginBottom="8dp" />
+
+<Button
+    android:id="@+id/btnRechercher"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/btn_rechercher"
+    android:backgroundTint="#059669"
+    android:textColor="#FFFFFF"
+    android:layout_marginBottom="16dp" />
+
         <!-- ZONE RÉSULTAT -->
         <TextView
             android:id="@+id/tvResultat"
