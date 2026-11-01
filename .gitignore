@@ -4,3 +4,7 @@ local.properties
 /build
 app/build/
 .idea/
+app/build/
+.gradle/
+build/
+local.properties
